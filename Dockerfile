@@ -18,6 +18,7 @@ RUN npm run build
 
 FROM nginx:alpine
 
-COPY --from=build-step /dist /usr/share/nginx/html
+COPY --from=build-step /app/dist /usr/share/nginx/html
+
 
 
