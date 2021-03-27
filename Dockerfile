@@ -12,12 +12,12 @@ RUN npm install
 
 COPY . /app
 
-RUN npm run build --prod
+RUN npm run build 
 
 # Stage 2
 
 FROM nginx:alpine
 
-COPY --from=build-step /app/docs /usr/share/nginx/html
+COPY --from=build-step /dist /usr/share/nginx/html
 
 
