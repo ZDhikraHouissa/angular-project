@@ -1,8 +1,7 @@
 version: '3'
 services:
   angular-ui:
-    build:
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "4200:4200"
     container_name: angular-ui
