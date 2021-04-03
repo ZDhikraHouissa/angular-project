@@ -2,6 +2,4 @@ version: '3'
 services:
   angular-ui:
     build: .
-    ports:
-      - "4200:4200"
     container_name: angular-ui
