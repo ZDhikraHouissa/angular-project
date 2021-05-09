@@ -20,7 +20,7 @@ FROM nginx:alpine
 
 RUN rm /etc/nginx/conf.d/default.conf #remove default nginx configuration
 
-COPY /app/nginx.conf /etc/nginx/conf.d/ # replace it with the file 
+COPY nginx.conf /etc/nginx/conf.d/ # replace it with the file 
 
 COPY --from=build-step /app/dist /usr/share/nginx/html
 
