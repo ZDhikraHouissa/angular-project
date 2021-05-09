@@ -18,12 +18,12 @@ RUN npm run build
 
 FROM nginx:alpine
 
-RUN rm /etc/nginx/conf.d/default.conf #remove default nginx configuration
+RUN rm /etc/nginx/conf.d/default.conf  
 
 
 COPY --from=build-step /app/dist /usr/share/nginx/html
 
-COPY ./nginx.conf /etc/nginx/conf.d  # replace it with the file 
+COPY ./nginx.conf /etc/nginx/conf.d   
  
 
 
