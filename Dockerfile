@@ -1,21 +1,30 @@
 # Stage 1
-FROM node:8.11.2-alpine as node
 
-WORKDIR /usr/src/app
+FROM node:10-alpine as build-step
 
-COPY package*.json ./
+RUN mkdir -p /app
 
-RUN npm i npm@latest -g
+WORKDIR /app
+
+COPY package.json /app
 
 RUN npm install
 
-COPY . .
+COPY . /app
 
-RUN npm run build
+RUN npm run build 
 
 # Stage 2
-FROM nginx:1.13.12-alpine
 
-COPY --from=node /usr/src/app/dist /usr/share/nginx/html
+FROM nginx:alpine
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf #remove default nginx configuration
+
+
+COPY --from=build-step /app/dist /usr/share/nginx/html
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf# replace it with the file 
+ 
+
+
+ 
