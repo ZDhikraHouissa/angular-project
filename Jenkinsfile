@@ -2,7 +2,7 @@ node {
 
     checkout scm
 
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
     
         def latestAngularImage = docker.build("dhikrahouissa/angular-app")
         def angularImage = docker.build("dhikrahouissa/angular-app:${env.BUILD_ID}")
